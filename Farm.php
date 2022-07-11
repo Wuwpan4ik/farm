@@ -12,28 +12,30 @@
                 return $this->animals[$name];
             }
 
-            public function addAnimals($name, $count)
+            public function addAnimals($count, $class)
             {
-                if (!$this->animals[$name]) {
-                    $this->animals[$name] = $count;
+                if (!empty($this->animals[$class::$name])) {
+                    $this->animals[$class::$name] = 0;
                 } else {
-                    $this->animals[$name] += $count;
+                    $this->animals[$class::$name] += $count;
                 }
             }
 
-            public function addProduction($name, $count, $productionName)
+            public function addProduction($class)
             {
-                if (!$this->productions[$name]) {
-                    $this->productions[$name] = [$count, $productionName];
-                } else {
-                    $this->productions[$name][0] += $count;
+                // Название продукции
+                $this->productions[$class::$name][1] = $class::$productionName;
+
+                //addProduction
+                for ($i = 0; $i < $this->getAnimals($class::$name); $i++) {
+                    $this->productions[$class::$name][0] += rand($class::$countProductionMin, $class::$countProductionMax);
                 }
             }
 
             public function printConsoleAnimals()
             {
                 foreach (array_keys($this->animals) as $animal) {
-                    print_r($this->animals[$animal] ." $animal на ферме \n");
+                    print_r($this->animals[$animal]. ' ' . $this->animals[$animal][1]. "  на ферме \n");
                 }
             }
 
@@ -41,7 +43,7 @@
             public function printConsoleProduction()
             {
                 foreach (array_keys($this->productions) as $production) {
-                    print_r($this->productions[$production][0]. ' ' . $this->productions[$production][1]. "  на ферме \n");
+                    print_r($this->productions[$production][0]. ' ' . $this->productions[$production][1]. " на ферме \n");
                 }
             }
         }

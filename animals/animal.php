@@ -3,23 +3,12 @@
         abstract class Animal
         {
 
-            public $productionName;
+            public static $name;
 
-            public $name;
+            public static $productionName;
 
-            public $countProductionMin;
+            public static $countProductionMin;
 
-            public $countProductionMax;
-
-            public function addProduction($farm)
-            {
-                $farm->addProduction($this->name, rand($this->countProductionMin, $this->countProductionMax), $this->productionName);
-            }
-
-            public function addAnimals($count, $farm)
-            {
-                $farm->addAnimals($this->name, $count);
-            }
-
+            public static $countProductionMax;
         }
     }

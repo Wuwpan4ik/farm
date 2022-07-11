@@ -10,13 +10,13 @@
         class Chicken extends Animal
         {
 
-            public $name = 'Курица';
+            public static $name = 'Курица';
 
-            public $productionName = 'яиц';
+            public static $productionName = 'яиц';
 
-            public $countProductionMin = 0;
+            public static $countProductionMin = 0;
 
-            public $countProductionMax = 1;
+            public static $countProductionMax = 1;
 
         }
     }

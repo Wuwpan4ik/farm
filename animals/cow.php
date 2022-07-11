@@ -10,13 +10,12 @@
         class Cow extends Animal
         {
 
-            public $name = 'Корова';
+            public static $name = 'Корова';
 
-            public $productionName = 'литров молока';
+            public static $productionName = 'литров молока';
 
-            public $countProductionMin = 8;
+            public static $countProductionMin = 8;
 
-            public $countProductionMax = 12;
-
+            public static $countProductionMax = 12;
         }
     }

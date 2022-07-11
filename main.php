@@ -6,26 +6,23 @@ namespace Farmer {
     include_once 'animals\cow.php';
     include_once 'Farm.php';
 
-    $chicken = new Chicken();
-    $cow = new Cow();
     $farm = new Farm();
 
-    //
-    print_r();
-    $chicken->addAnimals(20, $farm);
-    $cow->addAnimals(10, $farm);
+
+    $farm->addAnimals(20, Chicken::class);
+    $farm->addAnimals(10, Cow::class);
     $farm->printConsoleAnimals();
 
 
-    //
+
 
     for ($i = 1; $i < 8; $i++) {
-        $chicken->addProduction($farm);
-        $cow->addProduction($farm);
+        $farm->addProduction(Chicken::class);
+        $farm->addProduction(Cow::class);
     }
     $farm->printConsoleProduction();
 
-    //
+
 
 
 }
