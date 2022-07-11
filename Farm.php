@@ -42,6 +42,8 @@
 
             public function printConsoleProduction()
             {
+                // $this->productions[$production][0] - Количество
+                // $this->productions[$production][1] - Название
                 foreach (array_keys($this->productions) as $production) {
                     print_r($this->productions[$production][0]. ' ' . $this->productions[$production][1]. " на ферме \n");
                 }
