@@ -34,6 +34,8 @@
 
             public function printConsoleAnimals()
             {
+                // $this->animals[$animal] - Количество
+                // $this->animals[$animal] - Название
                 foreach (array_keys($this->animals) as $animal) {
                     print_r($this->animals[$animal]. ' ' . $this->animals[$animal][1]. "  на ферме \n");
                 }
