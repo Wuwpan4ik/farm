@@ -7,19 +7,16 @@
         include_once 'animals\animal.php';
         include_once 'Farm.php';
 
-        class Chicken implements Animal
+        class Chicken extends Animal
         {
 
-            protected $name = 'Курица';
+            public $name = 'Курица';
 
-            public function addProduction($farm)
-            {
-                $farm->addProduction($this->name, rand(0, 1));
-            }
+            public $productionName = 'яиц';
 
-            public function addAnimals($count, $farm)
-            {
-                $farm->addAnimals($this->name, $count);
-            }
+            public $countProductionMin = 0;
+
+            public $countProductionMax = 1;
+
         }
     }

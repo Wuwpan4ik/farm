@@ -8,7 +8,11 @@
 
             protected $productions = [];
 
-            protected function addAnimals($name, $count)
+            protected function getAnimals($name) {
+                return $this->animals[$name];
+            }
+
+            public function addAnimals($name, $count)
             {
                 if (!$this->animals[$name]) {
                     $this->animals[$name] = $count;
@@ -17,12 +21,12 @@
                 }
             }
 
-            protected function addProduction($name, $count)
+            public function addProduction($name, $count, $productionName)
             {
                 if (!$this->productions[$name]) {
-                    $this->productions[$name] = $count;
+                    $this->productions[$name] = [$count, $productionName];
                 } else {
-                    $this->productions[$name] += $count;
+                    $this->productions[$name][0] += $count;
                 }
             }
 
@@ -37,7 +41,7 @@
             public function printConsoleProduction()
             {
                 foreach (array_keys($this->productions) as $production) {
-                    print_r($this->productions[$production] ." $production  на ферме \n");
+                    print_r($this->productions[$production][0]. ' ' . $this->productions[$production][1]. "  на ферме \n");
                 }
             }
         }

@@ -1,11 +1,25 @@
 <?php
     namespace Farmer {
-        interface Animal
+        abstract class Animal
         {
 
-            public function addProduction($farm);
+            public $productionName;
 
-            public function addAnimals($count, $farm);
+            public $name;
+
+            public $countProductionMin;
+
+            public $countProductionMax;
+
+            public function addProduction($farm)
+            {
+                $farm->addProduction($this->name, rand($this->countProductionMin, $this->countProductionMax), $this->productionName);
+            }
+
+            public function addAnimals($count, $farm)
+            {
+                $farm->addAnimals($this->name, $count);
+            }
 
         }
     }

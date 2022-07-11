@@ -7,19 +7,16 @@
         include_once 'animals\animal.php';
         include_once 'Farm.php';
 
+        class Cow extends Animal
+        {
 
-        class Cow implements Animal {
+            public $name = 'Корова';
 
-            protected $name = 'Корова';
+            public $productionName = 'литров молока';
 
-            public function addProduction($farm)
-            {
-                $farm->addProduction($this->name, rand(8, 12));
-            }
+            public $countProductionMin = 8;
 
-            public function addAnimals($count, $farm)
-            {
-                $farm->addAnimals($this->name, $count);
-            }
+            public $countProductionMax = 12;
+
         }
     }
