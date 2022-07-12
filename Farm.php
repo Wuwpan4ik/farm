@@ -1,5 +1,5 @@
 <?php
-    require 'vendor/autoload.php';
+
     class Farm
     {
 
@@ -34,7 +34,7 @@
         public function getAllProduction()
         {
             foreach (array_keys($this->animals) as $animal) {
-                $this->addProduction((new $animal())->getClass());
+                $this->addProduction(get_class(new $animal()));
             }
         }
 

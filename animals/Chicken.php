@@ -22,9 +22,4 @@
             }
         }
 
-        public function getClass()
-        {
-            return self::class;
-        }
-
     }
