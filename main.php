@@ -1,12 +1,12 @@
 <?php
 
-namespace Farmer {
-
-    include_once 'animals\chicken.php';
-    include_once 'animals\cow.php';
+    include_once 'animals\Chicken.php';
+    include_once 'animals\Cow.php';
     include_once 'Farm.php';
 
     $farm = new Farm();
+    $cow = new Cow();
+    $chicken = new Chicken();
 
 
     $farm->addAnimals(20, Chicken::class);
@@ -32,5 +32,14 @@ namespace Farmer {
     }
     $farm->printConsoleProduction();
 
+    print_r("\n");
+    print_r("Собрали со всех животных: \n");
+    $farm->getAllProduction();
+    $farm->printConsoleProduction();
 
-}
+    print_r("\n");
+    print_r("Собрали с каждого: \n");
+    $cow->getProduction($farm);
+    $chicken->getProduction($farm);
+
+    $farm->printConsoleProduction();

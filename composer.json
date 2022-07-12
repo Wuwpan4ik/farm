@@ -1,0 +1,14 @@
+{
+    "name": "admin/admin",
+    "description": "a",
+    "autoload": {
+        "classmap" : [
+            "animals/"
+        ],
+        "files": [
+            "Farm.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}
