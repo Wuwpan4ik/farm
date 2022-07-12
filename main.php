@@ -22,7 +22,15 @@ namespace Farmer {
     }
     $farm->printConsoleProduction();
 
+    $farm->addAnimals(5, Chicken::class);
+    $farm->addAnimals(1, Cow::class);
+    $farm->printConsoleAnimals();
 
+    for ($i = 1; $i < 8; $i++) {
+        $farm->addProduction(Chicken::class);
+        $farm->addProduction(Cow::class);
+    }
+    $farm->printConsoleProduction();
 
 
 }

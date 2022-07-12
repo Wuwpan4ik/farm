@@ -14,14 +14,14 @@
 
             public function addAnimals($count, $class)
             {
-                if (isset($this->animals[$class::$name])) $this->animals[$class::$name] = 0;
+                if (!isset($this->animals[$class::$name])) $this->animals[$class::$name] = 0;
                 $this->animals[$class::$name] += $count;
             }
 
             public function addProduction($class)
             {
                 // Название продукции
-                if (isset($this->productions[$class::$name])) $this->productions[$class::$name][1] = '';
+                if (!isset($this->productions[$class::$name])) $this->productions[$class::$name][1] = '';
                 $this->productions[$class::$name][1] = $class::$productionName;
 
                 //addProduction
