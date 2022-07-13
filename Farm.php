@@ -14,9 +14,14 @@
 
         public function addAnimals(int $count, $class)
         {
-            if (!class_exists($class)) {
-                throw new Exception('Ошибка в названии класса');
+            if (gettype($class) === 'object') {
+                if (!isset($this->animals[$class->name])) $this->animals[$class->name] = 0;
+                $this->animals[$class->name] += $count;
+                return True;
             }
+            if (!get_class_methods($class)) {
+                throw new Exception('Это не класс или объект!');
+            };
             if (!isset($this->animals[$class::$name])) $this->animals[$class::$name] = 0;
             $this->animals[$class::$name] += $count;
             return True;
@@ -25,6 +30,7 @@
 
         public function addProduction($class)
         {
+
             if (!class_exists($class)) {
                 throw new Exception('Ошибка в названии класса');
             }
