@@ -3,9 +3,7 @@
     "description": "a",
     "autoload": {
         "classmap" : [
-            "animals/"
-        ],
-        "files": [
+            "animals/",
             "Farm.php"
         ]
     },

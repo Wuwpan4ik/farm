@@ -8,25 +8,33 @@
         public $productions = [];
 
 
-        public function getAnimals(string $name) {
+        public function getCountAnimals(string $name) {
             return (string) $this->animals[$name];
         }
 
         public function addAnimals(int $count, $class)
         {
+            if (!class_exists($class)) {
+                throw new Exception('Ошибка в названии класса');
+            }
             if (!isset($this->animals[$class::$name])) $this->animals[$class::$name] = 0;
             $this->animals[$class::$name] += $count;
+            return True;
         }
 
 
         public function addProduction($class)
         {
+            if (!class_exists($class)) {
+                throw new Exception('Ошибка в названии класса');
+            }
+
             // Название продукции
             if (!isset($this->productions[$class::$name])) $this->productions[$class::$name][1] = $class::$productionName;
 
             //addProduction
-            for ($i = 0; $i < $this->getAnimals($class::$name); $i++) {
-                $this->productions[$class::$name][0] += rand($class::$countProductionMin, $class::$countProductionMax);
+            for ($i = 0; $i < $this->getCountAnimals($class::$name); $i++) {
+                $this->productions[$class::$name][0] += ((new $class())->getCountProduction());
             }
         }
 

@@ -9,4 +9,8 @@
 
         public static $countProductionMax;
 
+        public function getCountProduction()
+        {
+            return rand(self::$countProductionMin, self::$countProductionMax);
+        }
     }
