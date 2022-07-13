@@ -8,14 +8,10 @@
     $cow = new Cow();
     $chicken = new Chicken();
 
-    $burionka = new Cow();
-    $burionka->name = 'Бурёнка';
-    print_r($burionka);
 
 
     $farm->addAnimals(20, Chicken::class);
-    $farm->addAnimals(20, Chicken::class);
-    $farm->addAnimals(1, $burionka);
+    $farm->addAnimals(20, Cow::class);
     $farm->printConsoleAnimals();
 
 
@@ -40,4 +36,18 @@
     print_r("\n");
     print_r("Собрали со всех животных: \n");
     $farm->getAllProduction();
+    $farm->printConsoleProduction();
+
+    $burionka = new Cow();
+    $burionka->name = 'Бурёнка';
+
+    $farm->addAnimals(1, $burionka);
+
+    print_r("\n");
+    print_r("Добвили 'Бурёнку': \n");
+
+    $farm->printConsoleAnimals();
+
+    $burionka->getPersonalProduction($farm);
+
     $farm->printConsoleProduction();
