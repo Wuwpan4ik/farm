@@ -10,8 +10,8 @@
 
 
 
-    $farm->addAnimals(20, Chicken::class);
-    $farm->addAnimals(20, Cow::class);
+    $farm->addAnimals(Chicken::class, 20);
+    $farm->addAnimals(Cow::class, 10);
     $farm->printConsoleAnimals();
 
 
@@ -23,8 +23,8 @@
     }
     $farm->printConsoleProduction();
 
-    $farm->addAnimals(5, Chicken::class);
-    $farm->addAnimals(1, Cow::class);
+    $farm->addAnimals(Chicken::class, 5);
+    $farm->addAnimals(Cow::class, 1);
     $farm->printConsoleAnimals();
 
     for ($i = 1; $i < 8; $i++) {
@@ -36,18 +36,16 @@
     print_r("\n");
     print_r("Собрали со всех животных: \n");
     $farm->getAllProduction();
+
     $farm->printConsoleProduction();
 
-    $burionka = new Cow();
-    $burionka->name = 'Бурёнка';
+    $burionka = new Cow('Бурёнка');
 
-    $farm->addAnimals(1, $burionka);
+    $farm->addAnimals($burionka);
 
     print_r("\n");
     print_r("Добвили 'Бурёнку': \n");
 
     $farm->printConsoleAnimals();
-
-    $burionka->getPersonalProduction($farm);
 
     $farm->printConsoleProduction();

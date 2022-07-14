@@ -12,18 +12,20 @@
             return (string) $this->animals[$name];
         }
 
-        public function addAnimals(int $count, $class)
+        public function addAnimals($class, int $count = 1)
         {
             if (gettype($class) === 'object') {
-                if (!isset($this->animals[$class->name])) $this->animals[$class->name] = 0;
-                $this->animals[$class->name] += $count;
+
+                $kindName = $class->getKindName();
+                if (!isset($this->animals[$kindName])) $this->animals[$kindName] = 0;
+                $this->animals[$kindName] += $count;
                 return True;
             }
             if (!get_class_methods($class)) {
                 throw new Exception('Это не класс или объект!');
             };
-            if (!isset($this->animals[$class::$name])) $this->animals[$class::$name] = 0;
-            $this->animals[$class::$name] += $count;
+            if (!isset($this->animals[$class::$kindName])) $this->animals[$class::$kindName] = 0;
+            $this->animals[$class::$kindName] += $count;
             return True;
         }
 
@@ -36,11 +38,11 @@
             }
 
             // Название продукции
-            if (!isset($this->productions[$class::$name])) $this->productions[$class::$name][1] = $class::$productionName;
+            if (!isset($this->productions[$class::$kindName])) $this->productions[$class::$kindName][1] = $class::$productionName;
 
             //addProduction
-            for ($i = 0; $i < $this->getCountAnimals($class::$name); $i++) {
-                $this->productions[$class::$name][0] += ((new $class())->getCountProduction());
+            for ($i = 0; $i < $this->getCountAnimals($class::$kindName); $i++) {
+                $this->productions[$class::$kindName][0] += ((new $class())->getCountProduction());
             }
         }
 
