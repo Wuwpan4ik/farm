@@ -20,4 +20,9 @@
             return rand(self::$countProductionMin, self::$countProductionMax);
         }
 
+        public function getKindName()
+        {
+            return self::$kindName;
+        }
+
     }
