@@ -7,17 +7,21 @@
 
         public $productions = [];
 
+        protected function validateClass($class) {
+            if (!get_class_methods($class)) {
+                throw new Exception('Ошибка в названии класса');
+            }
+        }
+
 
         public function getCountAnimals(string $name) {
             return (string) $this->animals[$name];
         }
 
-        public function addAnimals($class, int $count = 1)
+        public function addAnimals($class = Animal::class, int $count = 1)
         {
             // Проверка является ли классом
-            if (!get_class_methods($class)) {
-                throw new Exception('Ошибка в названии класса');
-            }
+            $this->validateClass($class);
 
             //Извлекаем род животного
             if (gettype($class) === 'object') {
@@ -33,12 +37,10 @@
         }
 
 
-        public function addProduction($class)
+        public function addProduction($class = Animal::class)
         {
             // Проверка является ли классом
-            if (!get_class_methods($class)) {
-                throw new Exception('Ошибка в названии класса');
-            }
+            $this->validateClass($class);
 
             // Добавляем название продукции
             if (!isset($this->productions[$class::$kindName])) $this->productions[$class::$kindName][1] = $class::$productionName;
