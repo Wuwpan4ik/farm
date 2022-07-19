@@ -15,6 +15,11 @@
 
         public static $countProductionMax = 12;
 
+        public function getProductionName()
+        {
+            return self::$productionName;
+        }
+
         public function getCountProduction()
         {
             return rand(self::$countProductionMin, self::$countProductionMax);

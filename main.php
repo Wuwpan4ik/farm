@@ -9,27 +9,26 @@
     $chicken = new Chicken();
 
 
-
-    $farm->addAnimals(Chicken::class, 20);
-    $farm->addAnimals(Cow::class, 10);
+    $farm->addAnimals($chicken, 20);
+    $farm->addAnimals($cow, 10);
     $farm->printConsoleAnimals();
 
 
 
 
     for ($i = 1; $i < 8; $i++) {
-        $farm->addProduction(Chicken::class);
-        $farm->addProduction(Cow::class);
+        $farm->addProduction($chicken);
+        $farm->addProduction($cow);
     }
     $farm->printConsoleProduction();
 
-    $farm->addAnimals(Chicken::class, 5);
-    $farm->addAnimals(Cow::class, 1);
+    $farm->addAnimals($chicken, 5);
+    $farm->addAnimals($cow, 1);
     $farm->printConsoleAnimals();
 
     for ($i = 1; $i < 8; $i++) {
-        $farm->addProduction(Chicken::class);
-        $farm->addProduction(Cow::class);
+        $farm->addProduction($chicken);
+        $farm->addProduction($cow);
     }
     $farm->printConsoleProduction();
 

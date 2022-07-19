@@ -1,5 +1,7 @@
 <?php
 
+    require 'vendor/autoload.php';
+
     class Farm
     {
 
@@ -7,47 +9,38 @@
 
         public $productions = [];
 
-        protected function validateClass($class) {
-            if (!get_class_methods($class)) {
-                throw new Exception('Ошибка в названии класса');
-            }
-        }
-
 
         public function getCountAnimals(string $name) {
             return (string) $this->animals[$name];
         }
 
-        public function addAnimals($class = Animal::class, int $count = 1)
+
+        public function addAnimals(Animal $class, int $count = 1)
         {
-            // Проверка является ли классом
-            $this->validateClass($class);
 
             //Извлекаем род животного
-            if (gettype($class) === 'object') {
-                $kindName = $class->getKindName();
-            } else {
-                $kindName = $class::$kindName;
-            }
+            $animal_class = new $class();
+            $kindName = $animal_class->getKindName();
 
             //Добавляем его на ферму
             if (!isset($this->animals[$kindName])) $this->animals[$kindName] = 0;
             $this->animals[$kindName] += $count;
-            return True;
         }
 
 
-        public function addProduction($class = Animal::class)
+        public function addProduction(Animal $class)
         {
-            // Проверка является ли классом
-            $this->validateClass($class);
+
+            //Извлекаем род животного
+            $animal_class = new $class();
+            $kindName = $animal_class->getKindName();
 
             // Добавляем название продукции
-            if (!isset($this->productions[$class::$kindName])) $this->productions[$class::$kindName][1] = $class::$productionName;
+            if (!isset($this->productions[$kindName])) $this->productions[$kindName][1] = $animal_class->getProductionName();
 
             //Добавляем количество продукции
-            for ($i = 0; $i < $this->getCountAnimals($class::$kindName); $i++) {
-                $this->productions[$class::$kindName][0] += ((new $class())->getCountProduction());
+            for ($i = 0; $i < $this->getCountAnimals($kindName); $i++) {
+                $this->productions[$kindName][0] += $animal_class->getCountProduction();
             }
         }
 
@@ -55,7 +48,7 @@
         public function getAllProduction()
         {
             foreach (array_keys($this->animals) as $animal) {
-                $this->addProduction(get_class(new $animal()));
+                $this->addProduction(new $animal());
             }
         }
 
