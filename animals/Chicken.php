@@ -2,7 +2,7 @@
 
     require 'vendor/autoload.php';
 
-    class Chicken extends Animal
+    class Chicken extends Animal implements AnimalInterface
     {
         public $name;
 
@@ -24,7 +24,7 @@
             return rand(self::$countProductionMin, self::$countProductionMax);
         }
 
-        public function getKindName()
+        public function getAnimalKindName()
         {
             return self::$kindName;
         }

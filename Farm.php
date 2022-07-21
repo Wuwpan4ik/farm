@@ -9,6 +9,12 @@
 
         public $productions = [];
 
+		protected function getKindName($animal_class) {
+			$animal_class = new $class();
+            $kindName = $animal_class->getAnimalKindName();
+			return $kindName;
+		}
+
 
         public function getCountAnimals(string $name) {
             return (string) $this->animals[$name];
@@ -19,8 +25,7 @@
         {
 
             //Извлекаем род животного
-            $animal_class = new $class();
-            $kindName = $animal_class->getKindName();
+            $kindName = $this->getKindName($class);
 
             //Добавляем его на ферму
             if (!isset($this->animals[$kindName])) $this->animals[$kindName] = 0;
@@ -32,8 +37,7 @@
         {
 
             //Извлекаем род животного
-            $animal_class = new $class();
-            $kindName = $animal_class->getKindName();
+            $kindName = $this->getKindName($class);
 
             // Добавляем название продукции
             if (!isset($this->productions[$kindName])) $this->productions[$kindName][1] = $animal_class->getProductionName();
