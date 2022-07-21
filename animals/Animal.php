@@ -1,5 +1,8 @@
 <?php
-    abstract class Animal
+
+    require 'vendor/autoload.php';
+
+    abstract class Animal implements AnimalsInterface
     {
 
         public function __construct($name = '')
@@ -16,9 +19,4 @@
         public static $countProductionMin;
 
         public static $countProductionMax;
-
-        public function getCountProduction()
-        {
-            return rand(self::$countProductionMin, self::$countProductionMax);
-        }
     }

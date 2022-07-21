@@ -4,8 +4,7 @@
     "autoload": {
         "classmap" : [
             "animals/",
-            "Farm.php",
-			"animals/AnimalInterface.php"
+            "Farm.php"
         ]
     },
     "minimum-stability": "stable",

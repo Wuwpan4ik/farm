@@ -9,7 +9,7 @@
 
         public $productions = [];
 
-		protected function getKindName($animal_class) {
+		protected function getKindName($class) {
 			$animal_class = new $class();
             $kindName = $animal_class->getAnimalKindName();
 			return $kindName;
@@ -40,11 +40,11 @@
             $kindName = $this->getKindName($class);
 
             // Добавляем название продукции
-            if (!isset($this->productions[$kindName])) $this->productions[$kindName][1] = $animal_class->getProductionName();
+            if (!isset($this->productions[$kindName])) $this->productions[$kindName][1] = (new $class())->getProductionName();
 
             //Добавляем количество продукции
             for ($i = 0; $i < $this->getCountAnimals($kindName); $i++) {
-                $this->productions[$kindName][0] += $animal_class->getCountProduction();
+                $this->productions[$kindName][0] += (new $class())->getCountProduction();
             }
         }
 

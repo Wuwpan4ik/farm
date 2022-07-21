@@ -2,7 +2,7 @@
 
     require 'vendor/autoload.php';
 
-    class Chicken extends Animal implements AnimalInterface
+    class Chicken extends Animal
     {
         public $name;
 
